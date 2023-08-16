@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package house;
+
+message hosue {
+  string _id = 1;
+  string name = 2;
+  string desc = 3;
+  string owner = 4;
+  repeated string sub_owner = 5;
+}

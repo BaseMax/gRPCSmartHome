@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+package room;
+
+message room {
+  string _id = 1;
+  string name = 2;
+  string group_id = 3;
+  string house_id = 4;
+}

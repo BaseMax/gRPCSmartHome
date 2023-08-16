@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package user;
+
+message User {
+  string _id = 1;
+  string name = 2;
+  string username = 3;
+  string password = 4;
+  repeated Permissions permissions = 5;
+}
+
+message Permissions {
+  string type = 1;
+  string _id = 2;
+  Permission perms = 3;
+}
+
+message Permission {
+  bool light = 1;
+  bool thermostat = 2;
+  bool camera = 3;
+}

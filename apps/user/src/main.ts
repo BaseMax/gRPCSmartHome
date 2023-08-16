@@ -1,18 +1,18 @@
 import { NestFactory } from '@nestjs/core';
-import { AuthModule } from './auth.module';
+import { UserModule } from './user.module';
 import { MicroserviceOptions, Transport } from '@nestjs/microservices';
+import { USER_PACKAGE_NAME, USER_PORT } from '@app/common';
 import { join } from 'path';
-import { AUTH_PACKAGE_NAME, AUTH_PORT } from '@app/common';
 
 async function bootstrap() {
   const app = await NestFactory.createMicroservice<MicroserviceOptions>(
-    AuthModule,
+    UserModule,
     {
       transport: Transport.GRPC,
       options: {
-        url: '0.0.0.0:' + AUTH_PORT,
-        protoPath: join(__dirname, '../auth.proto'),
-        package: AUTH_PACKAGE_NAME,
+        url: '0.0.0.0:' + USER_PORT,
+        protoPath: join(__dirname, '../user.proto'),
+        package: USER_PACKAGE_NAME,
       },
     },
   );
