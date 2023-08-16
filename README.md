@@ -80,6 +80,50 @@ smart-home-automation/
 └── ...
 ```
 
+## Functionality
+
+### 1. Control Lights
+
+Users can remotely control the lights in their smart home through the client application. The server communicates with the actual smart light devices and sends commands to turn the lights on or off based on user input.
+
+### 2. Adjust Thermostat
+
+The thermostat functionality allows users to set and adjust the temperature in their home using the client application. The gRPC service interacts with the thermostat devices to update the temperature settings and ensure optimal comfort.
+
+### 3. Monitor Security Cameras
+
+Users can access live camera feeds from their security cameras via the client application. The server fetches the camera data and streams it to the client, providing real-time visual updates of the designated areas.
+
+### 4. Real-time Updates
+
+The smart home automation system leverages gRPC's bidirectional streaming to provide real-time updates. This means that when a user interacts with the system (e.g., turns on a light), the server sends immediate feedback to the client, ensuring a responsive user experience.
+
+### 5. User Authentication and Security
+
+To ensure the security and privacy of the smart home, the project includes user authentication mechanisms. Only authorized users can access and control the devices in their home. Password protection and secure token management are implemented to safeguard user data.
+
+### 6. Device Status Monitoring
+
+The client application provides users with the ability to monitor the status of their devices. Users can check whether lights are on or off, view the current thermostat settings, and observe the activity captured by security cameras.
+
+### 7. Energy Efficiency Insights
+
+The system may also include a feature that provides insights into energy consumption. Users can track their energy usage patterns, receive recommendations for energy-efficient settings, and contribute to a more sustainable home environment.
+
+### 8. Automation and Scheduling (Future Enhancement)
+
+A future enhancement could include the ability to create automation rules and schedules. For instance, users might set up rules to automatically turn off lights during specific hours or adjust the thermostat based on time of day.
+
+## Roadmap
+
+This project is an ongoing effort. Here are some planned enhancements:
+
+- Integration with additional smart devices (e.g., smart locks, smart appliances).
+- Voice command integration using natural language processing.
+- Enhanced data visualization and analytics for energy consumption and device usage.
+
+Your contributions and ideas are welcome to help shape the future direction of this project!
+
 ## Contributing
 
 Contributions are welcome! If you'd like to contribute to the project, please fork the repository, create a feature branch, make your changes, and submit a pull request.
