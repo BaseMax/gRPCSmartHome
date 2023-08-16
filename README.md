@@ -177,6 +177,16 @@ A future enhancement could include the ability to create automation rules and sc
 - `/auth/register`: User registration
 - `/auth/login`: User login
 - `/dashboard`: View device status and controls
+- `/lights/status`: Get the current status (on/off) of lights.
+- `/thermostat/mode`: Set or retrieve the operating mode of the thermostat (cooling, heating, fan-only).
+- `/thermostat/fan`: Control the thermostat's fan settings (auto, on).
+- `/cameras/list`: List all available cameras and their details.
+- `/cameras/snapshot/:cameraId`: Capture and retrieve a snapshot from a camera.
+- `/security/alerts`: Retrieve recent security alerts or events captured by the cameras.
+- `/settings/lights`: Configure lights' behavior and settings.
+- `/settings/thermostat`: Configure thermostat settings (scheduling, energy-saving modes, etc.).
+- `/settings/users`: Manage user accounts, permissions, and access control.
+- `/automation/rules`: Create and manage automation rules (e.g., turn off lights after certain hours).
 
 ## Roadmap
 
