@@ -114,6 +114,70 @@ The system may also include a feature that provides insights into energy consump
 
 A future enhancement could include the ability to create automation rules and schedules. For instance, users might set up rules to automatically turn off lights during specific hours or adjust the thermostat based on time of day.
 
+## gRPC Commands or API Routes
+
+**Lights Control**
+
+- Turn On Lights
+    Method: TurnOnLights
+    Request: Empty
+    Response: Success or error message
+- Turn Off Lights
+    Method: TurnOffLights
+    Request: Empty
+    Response: Success or error message
+
+**Thermostat Control**
+
+- Set Temperature
+    Method: SetTemperature
+    Request: Desired temperature
+    Response: Success or error message
+
+- Get Current Temperature
+    Method: GetCurrentTemperature
+    Request: Empty
+    Response: Current temperature
+
+**Security Cameras**
+
+- Get Camera Feeds
+    Method: GetCameraFeeds
+    Request: Empty or camera ID
+    Response: Camera feed stream
+
+**Real-time Updates**
+
+- Subscribe to Device Updates
+    Method: SubscribeToDeviceUpdates
+    Request: User authentication token
+    Response: Real-time updates for device status changes
+
+**User Authentication**
+
+- User Registration
+
+    Method: RegisterUser
+    Request: Username, password, email
+    Response: Success or error message
+
+- User Login
+
+    Method: Login
+    Request: Username, password
+    Response: Authentication token or error message
+
+### API Routes (Web Application)
+
+- `/lights/on`: Turn on lights
+- `/lights/off`: Turn off lights
+- `/thermostat/set`: Set thermostat temperature
+- `/thermostat/get`: Get current thermostat temperature
+- `/cameras/stream/:cameraId`: Access camera feeds
+- `/auth/register`: User registration
+- `/auth/login`: User login
+- `/dashboard`: View device status and controls
+
 ## Roadmap
 
 This project is an ongoing effort. Here are some planned enhancements:
