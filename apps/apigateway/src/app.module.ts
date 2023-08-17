@@ -7,7 +7,14 @@ import { RoomModule } from './room/room.module';
 import { HouseModule } from './house/house.module';
 
 @Module({
-  imports: [AuthModule, UserModule, ThingModule, GroupModule, RoomModule, HouseModule],
+  imports: [
+    AuthModule,
+    UserModule,
+    ThingModule,
+    GroupModule,
+    RoomModule,
+    HouseModule,
+  ],
   controllers: [],
   providers: [],
 })

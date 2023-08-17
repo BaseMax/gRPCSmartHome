@@ -4,8 +4,9 @@ package auth;
 
 // Services
 service AuthService {
-  rpc LoginUser(LoginRequest) returns (LoginResponse);
-  rpc ReigsterUser(RegisterRequest) returns (RegisterResponse);
+  rpc LoginUser(LoginRequest) returns (LoginResponse) {};
+  rpc RegisterUser(RegisterRequest) returns (RegisterResponse) {};
+  rpc VerifyToken(VerifyTokenRequest) returns (VerifyTokenResponse) {};
 }
 
 // Requests body
@@ -16,24 +17,25 @@ message LoginRequest {
 
 message RegisterRequest {
   string username = 1;
-  string password = 2;
+  string name = 2;
+  string password = 3;
 }
 
-message RequestVerifyToken { string token = 1; }
+message VerifyTokenRequest { string token = 1; }
 
 // Responses body
 message LoginResponse { string token = 1; }
 message RegisterResponse { string token = 1; }
 message VerifyTokenResponse {
-  string _id = 1;
+  string id = 1;
   string name = 2;
   string username = 3;
   repeated UserPermissions permissions = 4;
 }
 
 message UserPermissions {
-  string type = 1;
-  string _id = 2;
+  string id = 1;
+  string type = 2;
   UserPermission perms = 3;
 }
 

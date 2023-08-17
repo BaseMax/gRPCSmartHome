@@ -2,8 +2,48 @@ syntax = "proto3";
 
 package user;
 
+// Methods
+service UserService {
+  rpc FindUserByUsername(FindUserByUsernameRequest) returns (UserResponse) {};
+  rpc FindUserById(FindUserByIdRequest) returns (UserResponse) {};
+  rpc CreateUser(CreateUserRequest) returns (CreateUserResponse) {};
+  rpc UpdateUser(UpdateUserRequest) returns (UpdateUserResponse) {};
+}
+// Requests
+message FindUserByUsernameRequest { string username = 1; }
+message FindUserByIdRequest { string id = 1; }
+message CreateUserRequest {
+  string username = 1;
+  string name = 2;
+  string password = 3;
+}
+message UpdateUserRequest {
+  string id = 1;
+  optional string name = 2;
+  optional string username = 3;
+  optional string password = 4;
+}
+// Responses
+message UserResponse {
+  int32 code = 1;
+  optional string message = 2;
+  optional User user = 3;
+}
+
+message CreateUserResponse {
+  int32 code = 1;
+  optional string message = 2;
+  optional User user = 3;
+}
+message UpdateUserResponse {
+  int32 code = 1;
+  optional string message = 2;
+  optional User user = 3;
+}
+
+// Types
 message User {
-  string _id = 1;
+  string id = 1;
   string name = 2;
   string username = 3;
   string password = 4;
@@ -11,8 +51,8 @@ message User {
 }
 
 message Permissions {
-  string type = 1;
-  string _id = 2;
+  string id = 1;
+  string type = 2;
   Permission perms = 3;
 }
 
