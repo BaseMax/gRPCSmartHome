@@ -2,10 +2,78 @@ syntax = "proto3";
 
 package house;
 
-message house {
+service HouseService {
+  rpc CreateHouse(CreateHouseRequest) returns (CreateHouseResponse) {}
+  rpc FindHouseById(FindHouseByIdRequest) returns (FindHouseByIdResponse) {}
+  rpc FindHousesByOwner(FindHouseByOwnerRequest)
+      returns (FindHousesByOwnerResponse) {}
+  rpc UpdateHouse(UpdateHouseRequest) returns (UpdateHouseResponse) {}
+  rpc DeleteHouse(DeleteHouseRequest) returns (DeleteHouseResponse) {}
+}
+// Requests
+message CreateHouseRequest {
+  string name = 1;
+  string desc = 2;
+  string userId = 3;
+}
+
+message FindHouseByIdRequest {
+  string id = 1;
+  string userId = 2;
+}
+
+message FindHouseByOwnerRequest {
+  string id = 1;
+  string userId = 2;
+}
+
+message UpdateHouseRequest {
+  string id = 1;
+  optional string name = 2;
+  optional string desc = 3;
+  string userId = 4;
+}
+
+message DeleteHouseRequest {
+  string id = 1;
+  string userId = 2;
+}
+
+// Responses
+message CreateHouseResponse {
+  int32 code = 1;
+  optional string message = 2;
+  House house = 3;
+}
+
+message FindHouseByIdResponse {
+  int32 code = 1;
+  optional string message = 2;
+  optional House house = 3;
+}
+
+message FindHousesByOwnerResponse {
+  int32 code = 1;
+  optional string message = 2;
+  repeated House house = 3;
+}
+
+message UpdateHouseResponse {
+  int32 code = 1;
+  optional string message = 2;
+  optional House house = 3;
+}
+
+message DeleteHouseResponse {
+  int32 code = 1;
+  optional string message = 2;
+  optional int32 deletedCount = 3;
+}
+
+// Types
+message House {
   string id = 1;
   string name = 2;
   string desc = 3;
-  string owner = 4;
-  repeated string sub_owner = 5;
+  string userId = 4;
 }

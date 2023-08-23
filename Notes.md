@@ -5,27 +5,7 @@
   "_id": "userIDIsHere",
   "name": "Alex Smith",
   "username": "Alex12",
-  "password": "some",
-  "permissions": [
-    {
-      "type": "house",
-      "_id": "id",
-      "perms": {
-        "light": true,
-        "thermostat": false,
-        "camera": false
-      }
-    },
-    {
-      "type": "room",
-      "_id": "id",
-      "perms": {
-        "light": true,
-        "thermostat": false,
-        "camera": true
-      }
-    }
-  ]
+  "password": "some"
 }
 ```
 

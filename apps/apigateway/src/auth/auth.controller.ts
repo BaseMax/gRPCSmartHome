@@ -9,13 +9,11 @@ export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
   @Post('login')
-  @UseInterceptors(GrpcToHttpInterceptor)
   login(@Body() loginDto: LoginDto) {
     return this.authService.login(loginDto);
   }
 
   @Post('register')
-  @UseInterceptors(GrpcToHttpInterceptor)
   register(@Body() registerDto: RegisterDto) {
     return this.authService.register(registerDto);
   }

@@ -25,6 +25,8 @@ export class UserService {
         user: null,
       };
 
+    console.log({ userInFindUsername: user });
+
     return {
       code: GrpcStatusCode.OK,
       user: user.toJSON(),

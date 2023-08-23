@@ -13,8 +13,7 @@ import { lastValueFrom } from 'rxjs';
 import * as bcrypt from 'bcrypt';
 import { signToken, verifyToken } from './jwt';
 import {
-  GrpcAbortedException,
-  GrpcNotFoundException,
+  GrpcAlreadyExistsException,
   GrpcUnauthenticatedException,
 } from 'nestjs-grpc-exceptions';
 import { IJwtPayload } from './jwt';
@@ -60,7 +59,9 @@ export class AuthService implements OnModuleInit {
     );
 
     if (resultFindUser.code !== GrpcStatusCode.NOT_FOUND)
-      throw new GrpcAbortedException('user with this username already exists');
+      throw new GrpcAlreadyExistsException(
+        'user with this username already exists',
+      );
 
     const hashedPassword = await bcrypt.hash(registerDto.password, 10);
     registerDto.password = hashedPassword;
@@ -69,11 +70,14 @@ export class AuthService implements OnModuleInit {
       this.userService.createUser(registerDto),
     );
     if (resultCreateUser.code !== GrpcStatusCode.OK)
-      throw new GrpcAbortedException('username already taken');
+      throw new GrpcAlreadyExistsException('username already taken');
 
     const newUser = resultCreateUser.user;
 
-    const payload: IJwtPayload = { id: newUser.id, username: newUser.username };
+    const payload: IJwtPayload = {
+      id: newUser.id,
+      username: newUser.username,
+    };
     const token = await signToken(payload);
 
     return { token };
@@ -90,6 +94,7 @@ export class AuthService implements OnModuleInit {
           username: result.username,
         }),
       );
+      console.log({ userInVerifyToken: user });
 
       return user;
     } catch (error) {

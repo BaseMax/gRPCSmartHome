@@ -4,7 +4,11 @@ import { User as IUser, Permissions } from '@app/common';
 
 export type UserDocument = HydratedDocument<User>;
 
-@Schema()
+@Schema({
+  toJSON: {
+    getters: true,
+  },
+})
 export class User implements Omit<IUser, 'id'> {
   @Prop({ required: true })
   name: string;
