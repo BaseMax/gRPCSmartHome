@@ -2,8 +2,42 @@ syntax = "proto3";
 
 package thing;
 
+service ThingService {
+  rpc CreateThing(CreateThingRequest) returns (CreateThingResponse) {};
+  rpc FindThingById(FindThingByIdRequest) returns (FindThingByIdResponse) {};
+  rpc UpdateThing(UpdateThingRequest) returns (UpdateThingResponse) {};
+  rpc DeleteThing(DeleteThingRequest) returns (DeleteThingRequest) {};
+}
+// Requests
+message CreateThingRequest {
+  string name = 1;
+  string desc = 2;
+}
+
+message FindThingByIdRequest { string id = 1; }
+
+message UpdateThingRequest {
+  string id = 1;
+  string name = 2;
+  string desc = 3;
+}
+
+message DeleteThingRequest { string id = 1; }
+
+// Responses
+message CreateThingResponse {}
+
+message FindThingByIdResponse {}
+
+message UpdateThingResponse {}
+
+message DeleteThingResponse {}
+
+// Types
 message thing {
   string id = 1;
   string name = 2;
   string desc = 3;
+  string status = 4;
+  string value = 5;
 }
