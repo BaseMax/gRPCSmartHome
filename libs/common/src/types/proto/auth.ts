@@ -31,19 +31,6 @@ export interface VerifyTokenResponse {
   id: string;
   name: string;
   username: string;
-  permissions: UserPermissions[];
-}
-
-export interface UserPermissions {
-  id: string;
-  type: string;
-  perms: UserPermission | undefined;
-}
-
-export interface UserPermission {
-  light: boolean;
-  thermostat: boolean;
-  camera: boolean;
 }
 
 export const AUTH_PACKAGE_NAME = 'auth';

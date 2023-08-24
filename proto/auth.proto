@@ -30,17 +30,4 @@ message VerifyTokenResponse {
   string id = 1;
   string name = 2;
   string username = 3;
-  repeated UserPermissions permissions = 4;
-}
-
-message UserPermissions {
-  string id = 1;
-  string type = 2;
-  UserPermission perms = 3;
-}
-
-message UserPermission {
-  bool light = 1;
-  bool thermostat = 2;
-  bool camera = 3;
 }

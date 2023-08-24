@@ -47,17 +47,4 @@ message User {
   string name = 2;
   string username = 3;
   string password = 4;
-  repeated Permissions permissions = 5;
-}
-
-message Permissions {
-  string id = 1;
-  string type = 2;
-  Permission perms = 3;
-}
-
-message Permission {
-  bool light = 1;
-  bool thermostat = 2;
-  bool camera = 3;
 }

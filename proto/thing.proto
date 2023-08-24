@@ -6,7 +6,8 @@ service ThingService {
   rpc CreateThing(CreateThingRequest) returns (CreateThingResponse) {};
   rpc FindThingById(FindThingByIdRequest) returns (FindThingByIdResponse) {};
   rpc UpdateThing(UpdateThingRequest) returns (UpdateThingResponse) {};
-  rpc DeleteThing(DeleteThingRequest) returns (DeleteThingRequest) {};
+  rpc DeleteThing(DeleteThingRequest) returns (DeleteThingResponse) {};
+  rpc DoAction(DoActionRequest) returns (DoActionResponse) {}
 }
 // Requests
 message CreateThingRequest {
@@ -24,17 +25,42 @@ message UpdateThingRequest {
 
 message DeleteThingRequest { string id = 1; }
 
+message DoActionRequest {
+  string id = 1;
+  string value = 2;
+  string status = 3;
+  string action = 4;
+}
+
 // Responses
-message CreateThingResponse {}
+message CreateThingResponse {
+  int32 code = 1;
+  Thing thing = 2;
+}
 
-message FindThingByIdResponse {}
+message FindThingByIdResponse {
+  int32 code = 1;
+  optional Thing thing = 2;
+}
 
-message UpdateThingResponse {}
+message UpdateThingResponse {
+  int32 code = 1;
+  optional Thing thing = 2;
+}
 
-message DeleteThingResponse {}
+message DeleteThingResponse {
+  int32 code = 1;
+  int32 deletedCount = 2;
+}
+
+message DoActionResponse {
+  int32 code = 1;
+  optional Thing thing = 2;
+  optional string message = 3;
+}
 
 // Types
-message thing {
+message Thing {
   string id = 1;
   string name = 2;
   string desc = 3;

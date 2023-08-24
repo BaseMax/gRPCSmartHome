@@ -1,6 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { HydratedDocument } from 'mongoose';
-import { User as IUser, Permissions } from '@app/common';
+import { User as IUser } from '@app/common';
 
 export type UserDocument = HydratedDocument<User>;
 
@@ -18,9 +18,6 @@ export class User implements Omit<IUser, 'id'> {
 
   @Prop({ required: true })
   password: string;
-
-  @Prop({ required: true, default: [] })
-  permissions: Permissions[];
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);

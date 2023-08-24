@@ -1,8 +1,6 @@
 /* eslint-disable */
-import { GrpcMethod, GrpcStreamMethod } from "@nestjs/microservices";
-import { Observable } from "rxjs";
-
-export const protobufPackage = "user";
+import { GrpcMethod, GrpcStreamMethod } from '@nestjs/microservices';
+import { Observable } from 'rxjs';
 
 /** Requests */
 export interface FindUserByUsernameRequest {
@@ -51,27 +49,16 @@ export interface User {
   name: string;
   username: string;
   password: string;
-  permissions: Permissions[];
 }
 
-export interface Permissions {
-  id: string;
-  type: string;
-  perms: Permission | undefined;
-}
-
-export interface Permission {
-  light: boolean;
-  thermostat: boolean;
-  camera: boolean;
-}
-
-export const USER_PACKAGE_NAME = "user";
+export const USER_PACKAGE_NAME = 'user';
 
 /** Methods */
 
 export interface UserServiceClient {
-  findUserByUsername(request: FindUserByUsernameRequest): Observable<UserResponse>;
+  findUserByUsername(
+    request: FindUserByUsernameRequest,
+  ): Observable<UserResponse>;
 
   findUserById(request: FindUserByIdRequest): Observable<UserResponse>;
 
@@ -87,30 +74,57 @@ export interface UserServiceController {
     request: FindUserByUsernameRequest,
   ): Promise<UserResponse> | Observable<UserResponse> | UserResponse;
 
-  findUserById(request: FindUserByIdRequest): Promise<UserResponse> | Observable<UserResponse> | UserResponse;
+  findUserById(
+    request: FindUserByIdRequest,
+  ): Promise<UserResponse> | Observable<UserResponse> | UserResponse;
 
   createUser(
     request: CreateUserRequest,
-  ): Promise<CreateUserResponse> | Observable<CreateUserResponse> | CreateUserResponse;
+  ):
+    | Promise<CreateUserResponse>
+    | Observable<CreateUserResponse>
+    | CreateUserResponse;
 
   updateUser(
     request: UpdateUserRequest,
-  ): Promise<UpdateUserResponse> | Observable<UpdateUserResponse> | UpdateUserResponse;
+  ):
+    | Promise<UpdateUserResponse>
+    | Observable<UpdateUserResponse>
+    | UpdateUserResponse;
 }
 
 export function UserServiceControllerMethods() {
   return function (constructor: Function) {
-    const grpcMethods: string[] = ["findUserByUsername", "findUserById", "createUser", "updateUser"];
+    const grpcMethods: string[] = [
+      'findUserByUsername',
+      'findUserById',
+      'createUser',
+      'updateUser',
+    ];
     for (const method of grpcMethods) {
-      const descriptor: any = Reflect.getOwnPropertyDescriptor(constructor.prototype, method);
-      GrpcMethod("UserService", method)(constructor.prototype[method], method, descriptor);
+      const descriptor: any = Reflect.getOwnPropertyDescriptor(
+        constructor.prototype,
+        method,
+      );
+      GrpcMethod('UserService', method)(
+        constructor.prototype[method],
+        method,
+        descriptor,
+      );
     }
     const grpcStreamMethods: string[] = [];
     for (const method of grpcStreamMethods) {
-      const descriptor: any = Reflect.getOwnPropertyDescriptor(constructor.prototype, method);
-      GrpcStreamMethod("UserService", method)(constructor.prototype[method], method, descriptor);
+      const descriptor: any = Reflect.getOwnPropertyDescriptor(
+        constructor.prototype,
+        method,
+      );
+      GrpcStreamMethod('UserService', method)(
+        constructor.prototype[method],
+        method,
+        descriptor,
+      );
     }
   };
 }
 
-export const USER_SERVICE_NAME = "UserService";
+export const USER_SERVICE_NAME = 'UserService';
