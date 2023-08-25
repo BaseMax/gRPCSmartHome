@@ -1,0 +1,273 @@
+{
+	"info": {
+		"_postman_id": "de2ebc18-743f-48f6-8efe-f149aacf6ea1",
+		"name": "gRPCSmartHome HTTP",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "23340629"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"amin\",\n    \"password\": \"password\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{http_url}}/auth/login"
+					},
+					"response": []
+				},
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"amin\",\n    \"username\": \"amin1\",\n    \"password\": \"password1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{http_url}}/auth/register"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "House",
+			"item": [
+				{
+					"name": "Create House",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{token}}"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"white house XD\",\n    \"desc\": \"this is not white\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{http_url}}/house"
+					},
+					"response": []
+				},
+				{
+					"name": "Find House By ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{token}}"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "{{http_url}}/house/64e628e3e510487ce048081d"
+					},
+					"response": []
+				},
+				{
+					"name": "Update House",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{token}}"
+							}
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"new Name\",\n    \"desc\": \"new Desc\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{http_url}}/house/64e628e3e510487ce048081d"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete House",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{token}}"
+							}
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": "{{http_url}}/house/64e628e3e510487ce048081d"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Thing",
+			"item": [
+				{
+					"name": "Add Thing",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{token}}"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"camera01\",\n    \"desc\": \"camera in back yard\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{http_url}}/thing"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Thing",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{token}}"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "{{http_url}}/thing/64e74c478957d854c472cac6"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Thing",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{token}}"
+							}
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"new name for thing\",\n    \"desc\": \"optional desc for thing\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{http_url}}/thing/64e749214715386c896fe52d"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Thing",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{token}}"
+							}
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": "{{http_url}}/thing/64e749214715386c896fe52d"
+					},
+					"response": []
+				},
+				{
+					"name": "Do Action",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{token}}"
+							}
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"action\": \"SETMODE\",\n    \"status\": \"auto\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{http_url}}/thing/64e74c478957d854c472cac6"
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "http_url",
+			"value": "http://localhost:3000",
+			"type": "string"
+		},
+		{
+			"key": "token",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZGRlOGY4YmVkNjY2ZTczMmJmMjBiOSIsInVzZXJuYW1lIjoiYW1pbiIsImlhdCI6MTY5Mjg3OTEwNiwiZXhwIjoxNjkyOTY1NTA2fQ.DXZ76uXsmwn3EPgddq6mp-CueGd1WEZYAxQ2PBocups",
+			"type": "string"
+		}
+	]
+}
