@@ -9,7 +9,6 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import { HouseService } from './house.service';
-import { User } from 'apps/user/src/user.model';
 import { CreateHouseDto, UpdateHouseDto } from './dto';
 import { CurrentUser } from '../auth/decorator';
 import { JwtGuard } from '../auth/guard';
@@ -20,10 +19,7 @@ export class HouseController {
 
   @UseGuards(JwtGuard)
   @Post()
-  createHouse(
-    @Body() createHouseDto: CreateHouseDto,
-    @CurrentUser() user: User,
-  ) {
+  createHouse(@Body() createHouseDto: CreateHouseDto, @CurrentUser() user) {
     return this.houseService.createHouse(createHouseDto, user);
   }
 
