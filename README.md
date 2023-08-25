@@ -38,10 +38,10 @@ The Thing Service manage and do interaction with things. Methods:
 
 ![demo](./screenshots/GRPCSMARTHOME.png)
 
-- http requests from apigateway
-  ![all requests](./screenshots/all_requests.png)
-- grpc methods
-  ![all grpc methods](./screenshots/grpc_all_requests.png)
+http requests from apigateway
+![all requests](./screenshots/all_requests.png)
+grpc methods
+![all grpc methods](./screenshots/grpc_all_requests.png)
 
 - auth
   ![auth register](./screenshots/auth_register.png)
