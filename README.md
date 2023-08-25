@@ -38,27 +38,35 @@ The Thing Service manage and do interaction with things. Methods:
 
 ![demo](./screenshots/GRPCSMARTHOME.png)
 
-http requests from apigateway
+### http requests from apigateway
+
 ![all requests](./screenshots/all_requests.png)
-grpc methods
+
+### grpc methods
+
 ![all grpc methods](./screenshots/grpc_all_requests.png)
 
-- auth
-  ![auth register](./screenshots/auth_register.png)
-  ![auth login](./screenshots/auth_login.png)
-  ![invalid token](./screenshots/invalid_token.png)
-- house
-  ![house add](./screenshots/house_create.png)
-  ![house update](./screenshots/house_update.png)
-  ![house delete](./screenshots/house_delete.png)
-  ![house get](./screenshots/house_find.png)
-- thing
-  ![thing add](./screenshots/thing_create.png)
-  ![thing update](./screenshots/thing_update.png)
-  ![thing  delete](./screenshots/thing_delete.png)
-  ![thing get](./screenshots/thing_find.png)
-  ![thing turn on](./screenshots/thing_action_turn_on.png)
-  ![thing set auto](./screenshots/thing_set_auto.png)
+### **AUTH HTTP end points**
+
+![auth register](./screenshots/auth_register.png)
+![auth login](./screenshots/auth_login.png)
+![invalid token](./screenshots/invalid_token.png)
+
+### **HOUSE HTTP end points**
+
+![house add](./screenshots/house_create.png)
+![house update](./screenshots/house_update.png)
+![house delete](./screenshots/house_delete.png)
+![house get](./screenshots/house_find.png)
+
+### **THING HTTP end points**
+
+![thing add](./screenshots/thing_create.png)
+![thing update](./screenshots/thing_update.png)
+![thing  delete](./screenshots/thing_delete.png)
+![thing get](./screenshots/thing_find.png)
+![thing turn on](./screenshots/thing_action_turn_on.png)
+![thing set auto](./screenshots/thing_set_auto.png)
 
 ## Features
 
