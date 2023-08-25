@@ -24,8 +24,6 @@ export class ThingService implements OnModuleInit {
   }
 
   updateThing(id: string, dto: UpdateThingDto) {
-    console.log({ id, dto });
-
     return this.thingService.updateThing({ id, ...dto });
   }
 

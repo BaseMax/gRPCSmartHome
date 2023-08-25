@@ -7,10 +7,8 @@ export class isOwnerGuard implements CanActivate {
 
   async canActivate(context: ExecutionContext): Promise<boolean> {
     const result = this.extractOwnerIdAndHouseId(context);
-    console.log({ result });
 
     const isOwner = await this.houseService.isOwner(result.userId, result.id);
-    console.log({ isOwner });
 
     return !!isOwner;
   }

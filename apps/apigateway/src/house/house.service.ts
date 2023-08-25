@@ -13,7 +13,6 @@ export class HouseService implements OnModuleInit {
   }
 
   createHouse(dto, user) {
-    console.log({ user });
     return this.houseService.createHouse({ ...dto, userId: user.id });
   }
 

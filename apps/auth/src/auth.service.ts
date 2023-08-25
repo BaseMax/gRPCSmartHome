@@ -94,7 +94,6 @@ export class AuthService implements OnModuleInit {
           username: result.username,
         }),
       );
-      console.log({ userInVerifyToken: user });
 
       return user;
     } catch (error) {

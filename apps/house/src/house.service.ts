@@ -66,7 +66,6 @@ export class HouseService {
         desc: request.desc,
       },
     );
-    console.log({ house });
 
     return {
       code: GrpcStatusCode.OK,
@@ -83,8 +82,6 @@ export class HouseService {
   }
 
   async isOwner(userId: string, houseId: string): Promise<boolean> {
-    console.log({ userId, houseId });
-
     const house = await this.houseModel.findOne({ id: houseId });
     if (!house) return null;
     return house.userId.toString() === userId.toString();
