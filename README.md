@@ -2,6 +2,64 @@
 
 Welcome to the Smart Home Automation System project! This project aims to create a smart home automation system using gRPC for communication, allowing users to control and monitor devices such as lights, thermostats, and security cameras remotely.
 
+## AuthService
+
+The Auth Service handles user authentication and authorization. Methods:
+
+- POST: `/auth/register` register user with correct credentials
+- POST: `/auth/login` login to account
+- **(available internally with grpc authService)** verifyToken: verify login user token
+
+## HouseService
+
+The House Service manage house data. Methods:
+
+- POST: `/house` add your house
+- PUT: `/house/:<ID>` update house data
+- DELETE: `/house/:<ID>` remove your house data
+- GET: `/house/:<ID>` see house status
+
+## ThingService
+
+The Thing Service manage and do interaction with things. Methods:
+
+- Post: `/thing` add your thing to your house
+- PUT: `/thing/:<ID>` update your thing data(just information)
+- DELETE: `/thing/:<ID>` delete thing
+- GET `/thing/:<ID>` get information about thing
+- PATCH `/thing/:<ID>` have interaction with your thing here
+  - turn on
+  - turn off
+  - change mode
+  - increase level
+  - decrease level
+
+# Demo
+
+![demo](./screenshots/GRPCSMARTHOME.png)
+
+- http requests from apigateway
+  ![all requests](./screenshots/all_requests.png)
+- grpc methods
+  ![all grpc methods](./screenshots/grpc_all_requests.png)
+
+- auth
+  ![auth register](./screenshots/auth_register.png)
+  ![auth login](./screenshots/auth_login.png)
+  ![invalid token](./screenshots/invalid_token.png)
+- house
+  ![house add](./screenshots/house_create.png)
+  ![house update](./screenshots/house_update.png)
+  ![house delete](./screenshots/house_delete.png)
+  ![house get](./screenshots/house_find.png)
+- thing
+  ![thing add](./screenshots/thing_create.png)
+  ![thing update](./screenshots/thing_update.png)
+  ![thing  delete](./screenshots/thing_delete.png)
+  ![thing get](./screenshots/thing_find.png)
+  ![thing turn on](./screenshots/thing_action_turn_on.png)
+  ![thing set auto](./screenshots/thing_set_auto.png)
+
 ## Features
 
 - Control lights: Turn on/off lights remotely.
@@ -12,7 +70,7 @@ Welcome to the Smart Home Automation System project! This project aims to create
 
 ### Prerequisites
 
-- Node.js (v14 or higher)
+- Node.js (v16 or higher)
 - npm (Node Package Manager)
 
 ### Installation
@@ -24,61 +82,23 @@ git clone https://github.com/BaseMax/gRPCSmartHome.git
 cd gRPCSmartHome
 ```
 
-**Install dependencies for both the server and client:**
+**Install dependencies:**
 
-```bash
+````bash
 # Server
-cd server
 npm install
-
-# Client
-cd ../client
-npm install
-```
 
 ## Usage
-
 **Start the server:**
 
 ```bash
 # Inside the server directory
-npm start
-```
-
-**Start the client application:**
-
-```bash
-# Inside the client directory
-npm start
-```
-
-Open your browser and navigate to `http://localhost:3000` to access the client application.
-
-## Architecture
-
-**Server:** Implements the gRPC service and communicates with actual devices.
-
-**Client:** Provides a user interface to interact with the smart devices via the gRPC service.
-
-## Directory Structure
-```
-smart-home-automation/
-├── server/
-│   ├── src/
-│   │   ├── proto/          # gRPC proto files
-│   │   ├── devices/        # Device control logic
-│   │   ├── server.ts       # Main server implementation
-│   │   └── ...
-│   └── ...
-│
-├── client/
-│   ├── src/
-│   │   └── ...
-│   └── ...
-│
-├── README.md               # Project documentation (this file)
-└── ...
-```
+npm start:dev user
+npm start:dev auth
+npm start:dev house
+npm start:dev thing
+npm start:dev apigateway
+````
 
 ## Functionality
 
@@ -105,98 +125,6 @@ To ensure the security and privacy of the smart home, the project includes user 
 ### 6. Device Status Monitoring
 
 The client application provides users with the ability to monitor the status of their devices. Users can check whether lights are on or off, view the current thermostat settings, and observe the activity captured by security cameras.
-
-### 7. Energy Efficiency Insights
-
-The system may also include a feature that provides insights into energy consumption. Users can track their energy usage patterns, receive recommendations for energy-efficient settings, and contribute to a more sustainable home environment.
-
-### 8. Automation and Scheduling (Future Enhancement)
-
-A future enhancement could include the ability to create automation rules and schedules. For instance, users might set up rules to automatically turn off lights during specific hours or adjust the thermostat based on time of day.
-
-## gRPC Commands or API Routes
-
-**Lights Control**
-
-- Turn On Lights
-    Method: TurnOnLights
-    Request: Empty
-    Response: Success or error message
-- Turn Off Lights
-    Method: TurnOffLights
-    Request: Empty
-    Response: Success or error message
-
-**Thermostat Control**
-
-- Set Temperature
-    Method: SetTemperature
-    Request: Desired temperature
-    Response: Success or error message
-
-- Get Current Temperature
-    Method: GetCurrentTemperature
-    Request: Empty
-    Response: Current temperature
-
-**Security Cameras**
-
-- Get Camera Feeds
-    Method: GetCameraFeeds
-    Request: Empty or camera ID
-    Response: Camera feed stream
-
-**Real-time Updates**
-
-- Subscribe to Device Updates
-    Method: SubscribeToDeviceUpdates
-    Request: User authentication token
-    Response: Real-time updates for device status changes
-
-**User Authentication**
-
-- User Registration
-
-    Method: RegisterUser
-    Request: Username, password, email
-    Response: Success or error message
-
-- User Login
-
-    Method: Login
-    Request: Username, password
-    Response: Authentication token or error message
-
-### API Routes (Web Application)
-
-- `/lights/on`: Turn on lights
-- `/lights/off`: Turn off lights
-- `/thermostat/set`: Set thermostat temperature
-- `/thermostat/get`: Get current thermostat temperature
-- `/cameras/stream/:cameraId`: Access camera feeds
-- `/auth/register`: User registration
-- `/auth/login`: User login
-- `/dashboard`: View device status and controls
-- `/lights/status`: Get the current status (on/off) of lights.
-- `/thermostat/mode`: Set or retrieve the operating mode of the thermostat (cooling, heating, fan-only).
-- `/thermostat/fan`: Control the thermostat's fan settings (auto, on).
-- `/cameras/list`: List all available cameras and their details.
-- `/cameras/snapshot/:cameraId`: Capture and retrieve a snapshot from a camera.
-- `/security/alerts`: Retrieve recent security alerts or events captured by the cameras.
-- `/settings/lights`: Configure lights' behavior and settings.
-- `/settings/thermostat`: Configure thermostat settings (scheduling, energy-saving modes, etc.).
-- `/settings/users`: Manage user accounts, permissions, and access control.
-- `/automation/rules`: Create and manage automation rules (e.g., turn off lights after certain hours).
-
-## Roadmap
-
-This project is an ongoing effort. Here are some planned enhancements:
-
-- Integration with additional smart devices (e.g., smart locks, smart appliances).
-- Voice command integration using natural language processing.
-- Enhanced data visualization and analytics for energy consumption and device usage.
-
-Your contributions and ideas are welcome to help shape the future direction of this project!
 
 ## Contributing
 
